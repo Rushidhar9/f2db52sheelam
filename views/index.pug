@@ -1,0 +1,20 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to Rushidhar sheelam #{title}
+  button(type="button", class="btn btn-danger",onClick = "doBump()") Press Me
+  p
+  div(id = "bump") Bump the count
+  p
+  a(href="biryani") biryani
+  script.
+    let count = 0;
+    let bump  = 1;
+    function doBump() {
+      count += bump;
+      bump = bump+1;
+      document.getElementById('bump').innerHTML = `Count ${count} with bump ${bump}`;
+    }
+
+

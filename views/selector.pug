@@ -1,0 +1,9 @@
+extends layout
+
+block content
+  h1= title
+  - var image_names = ["biryani_1.jpg", "biryani_2.jpg", "biryani_3.jpg", "biryani_4.jpg", "biryani_5.jpg"];
+    - for(let i = 0; i < 3; i++) {
+        - let ranValue = Math.floor(Math.random() * 5);
+        img(src=`/images/${image_names[ranValue]}`, alt="Biryani Image", height="300px", width="300px")
+    - }
