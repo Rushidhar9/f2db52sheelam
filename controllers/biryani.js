@@ -14,10 +14,7 @@ exports.biryani_list = async function(req, res) {
 exports.biryani_detail = function(req, res) {
 res.send('NOT IMPLEMENTED: Biryani detail: ' + req.params.id);
 };
-// Handle Biryani create on POST.
-exports.biryani_create_post = function(req, res) {
-res.send('NOT IMPLEMENTED: Biryani create POST');
-};
+
 // Handle Biryani delete form on DELETE.
 exports.biryani_delete = function(req, res) {
 res.send('NOT IMPLEMENTED: Biryani delete DELETE ' + req.params.id);
@@ -37,3 +34,22 @@ exports.biryani_view_all_Page = async function(req, res) {
     res.send(`{"error": ${err}}`);
     }
 };
+// Handle Biryani create on POST.
+exports.biryani_create_post = async function(req, res) {
+    console.log(req.body)
+    let document = new Biryani();
+    // We are looking for a body, since POST does not have query parameters.
+    // Even though bodies can be in many different formats, we will be picky
+    // and require that it be a json object
+    document.biryaniType = req.body.biryaniType;
+    document.biryaniFlavor = req.body.biryaniFlavor;
+    document.biryaniPrice = req.body.biryaniPrice;
+    try{
+    let result = await document.save();
+    res.send(result);
+    }
+    catch(err){
+    res.status(500);
+    res.send(`{"error": ${err}}`);
+    }
+    };
