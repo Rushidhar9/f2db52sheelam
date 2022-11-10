@@ -19,6 +19,7 @@ var usersRouter = require('./routes/users');
 var biryaniRouter = require('./routes/biryani');
 var gridRouter = require('./routes/gridbuild');
 var selectRouter = require('./routes/selector');
+var biryaniRouterResource = require('./routes/resource');
 
 
 var app = express();
@@ -38,6 +39,7 @@ app.use('/users', usersRouter);
 app.use('/biryani',biryaniRouter);
 app.use('/gridbuild',gridRouter);
 app.use('/selector',selectRouter);
+app.use('/resource',biryaniRouterResource);
 
 
 // catch 404 and forward to error handler
