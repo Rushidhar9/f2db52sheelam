@@ -3,6 +3,16 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var Biryani = require("./models/biryani");
+
+require('dotenv').config();
+const connectionString = process.env.MONGO_CON
+mongoose = require('mongoose');
+mongoose.connect(connectionString,
+{
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+});
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -45,5 +55,36 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+//Get the default connection
+var db = mongoose.connection;
+//Bind connection to error event
+db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+db.once("open", function(){
+console.log("Connection to DB succeeded")});
+
+async function recreateDB(){
+  // Delete everything
+  await Biryani.deleteMany();
+  let instance1 = new Biryani({biryaniType: "Chicken", biryaniFlavor: "masala", biryaniPrice: 15});
+  let instance2 = new Biryani({biryaniType: "Mutton", biryaniFlavor: "dum", biryaniPrice: 17});
+  let instance3 = new Biryani({biryaniType: "Prawn", biryaniFlavor: "spicy", biryaniPrice: 19});
+
+  instance1.save( function(err,doc) {
+    if(err) return console.error(err);
+    console.log("First object saved")
+  });
+  instance2.save( function(err,doc) {
+    if(err) return console.error(err);
+    console.log("Second object saved")
+  });
+  instance3.save( function(err,doc) {
+    if(err) return console.error(err);
+    console.log("Third object saved")
+  });
+
+  }
+  let reseed = true;
+  if (reseed) { recreateDB();}
 
 module.exports = app;
