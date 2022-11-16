@@ -11,4 +11,6 @@ router.get('/create', biryani_controlers.biryani_create_Page);
 
 router.get('/update', biryani_controlers.biryani_update_Page);
 
+router.get('/delete', biryani_controlers.biryani_delete_Page);
+
 module.exports = router;
