@@ -11,16 +11,16 @@ block content
  - let actionid = "/resource/biryanis/" + biryaniid
  script let actionid = "#{actionid}"
  div
-  div.row
+  div.row(class='rowChange')
    div(class='biryaniAttr mr-3') Biryani ID is:
    div #{biryaniid}
-  div.row
+  div.row(class='rowChange1')
    div(class='biryaniAttr mr-3') Biryani Type is:
    div #{biryaniType}
-  div.row
+  div.row(class='rowChange2')
    div(class='biryaniAttr mr-3') Biryani Flavor is:
    div #{biryaniFlavor}
-  div.row
+  div.row(class='rowChange3')
    div(class='biryaniAttr mr-3') Biryani Price is:
    div #{biryaniPrice}
  button(class="btn btn-danger m-2" onclick="deleteOnid()") Delete
