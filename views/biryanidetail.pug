@@ -1,0 +1,21 @@
+extends layout
+
+block content
+  h1= title
+  - let id = toShow.id
+  - let biryaniType = toShow.biryaniType
+  - let biryaniFlavor = toShow.biryaniFlavor
+  - let biryaniPrice = toShow.biryaniPrice
+    div
+     div.row
+      div(class='biryaniAttr mr-3') Biryani ID is:
+      div #{id}
+     div.row
+      div(class='biryaniAttr mr-3') Biryani Type is:
+      div #{biryaniType}
+     div.row
+      div(class='biryaniAttr mr-3') Biryani Flavor is:
+      div #{biryaniFlavor}
+     div.row
+      div(class='biryaniAttr mr-3') Biryani Price is:
+      div #{biryaniPrice}
