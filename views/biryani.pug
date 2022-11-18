@@ -4,10 +4,13 @@ block content
   h1= title
   - var biryanis = results
     div(class = 'container-fluid')
-      div(class = 'row')
-        each item,index in biryanis 
-          div(class="col-sm-2", onClick=`buy(${index})`) BiryaniType : #{item["biryaniType"]} <br> BiryaniFlavor : #{item["biryaniFlavor"]} <br> BiryaniPrice: #{item["biryaniPrice"]}
-          script.
-            function buy(value) {
-              alert(`You purchased item ${value}`)
-            }
+      div(class = 'row m-1')
+        each item in biryanis
+         - let destination = `dispatch(\"/biryani/update?id=${item._id}\")`
+          div(class="row-sm-2", class="m-1") Item #{item.biryaniType  }(#{item.biryaniFlavor}) is #{item.biryaniPrice}
+           button.btn( class="btn-primary ml-1", onclick= destination) Update
+
+    script.
+     function dispatch(path){
+      window.location.href=path
+     }
