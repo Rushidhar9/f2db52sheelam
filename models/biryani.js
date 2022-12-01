@@ -4,7 +4,9 @@ const biryaniSchema = mongoose.Schema({
         type : String,
         maxLength: 10
     },
-    biryaniFlavor: String,
+    biryaniFlavor: {
+        type : String,
+        minLength: 3 },
     biryaniPrice: Number
 })
 
